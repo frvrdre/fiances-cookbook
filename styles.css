@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
 
 
-/* Main colours and reusable values */
+/* =========================================
+   MAIN COLOURS AND REUSABLE VALUES
+   ========================================= */
 
 :root {
   /* Page backgrounds */
@@ -49,42 +51,32 @@
 }
 
 
-/* Basic reset */
+/* =========================================
+   BASIC RESET
+   ========================================= */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-<<<<<<< HEAD
-  scroll-behaviour: smooth;
-=======
-  scroll-behavior: smooth;
->>>>>>> 2588f79 (added smoother navigation through site)
 }
 
 
-/* Main page styles */
+/* =========================================
+   MAIN PAGE STYLES
+   ========================================= */
 
 html {
   scroll-behavior: smooth;
-  animation: page-load 0.8s ease-out;
+
+  /* Stops sticky nav covering sections */
   scroll-padding-top: 80px;
 }
 
-@keyframes page-load {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 body {
   margin: 0;
+
   min-height: 100vh;
 
   background-color: var(--color-page-background);
@@ -103,31 +95,63 @@ body {
       transparent 0.8px
     );
 
-  background-size: 100% 100%, 100% 20px;
+  background-size:
+    100% 100%,
+    100% 20px;
 
   color: var(--color-text);
 
   font-family: Arial, Helvetica, sans-serif;
+
   line-height: 1.6;
 }
 
 
-/* Default element styles */
+/* Smooth page entrance */
+
+main {
+  animation: page-load 0.8s ease-out;
+}
+
+
+@keyframes page-load {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   DEFAULT ELEMENT STYLES
+   ========================================= */
 
 a {
   color: inherit;
+
   text-decoration: none;
 }
 
+
 img {
   display: block;
+
   max-width: 100%;
 }
+
 
 ul,
 ol {
   list-style: none;
 }
+
 
 button,
 input,
@@ -136,10 +160,13 @@ select {
   font: inherit;
 }
 
+
 button {
   border: none;
+
   cursor: pointer;
 }
+
 
 h1,
 h2,
@@ -148,19 +175,27 @@ p {
   margin: 0;
 }
 
+
 a,
 h1,
 h2,
 h3,
-p {
+p,
+button {
   font-family: "DynaPuff", Arial, Helvetica, sans-serif;
 }
 
+
 h3 {
   font-size: 30px;
+
   color: var(--color-heading);
 }
 
+
+/* =========================================
+   MAIN CONTENT LAYOUT
+   ========================================= */
 
 /* Keeps the main content centred */
 
@@ -175,17 +210,24 @@ footer {
 }
 
 
-/* Sticky navigation */
+/* =========================================
+   STICKY NAVIGATION
+   ========================================= */
 
 .site-header {
   position: sticky;
-  padding: 0.5rem;
+
   top: 0;
-  z-index: 1;
+
+  z-index: 100;
+
+  padding: 0.5rem;
 }
+
 
 .primary-nav {
   display: flex;
+
   justify-content: center;
   align-items: center;
 
@@ -208,15 +250,28 @@ footer {
   border-radius: 12px;
 }
 
-.primary-nav a:hover {
-  color: var(--color-secondary);
+
+.primary-nav a {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 
-/* Hero section */
+.primary-nav a:hover {
+  color: var(--color-secondary);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
 
 .hero-section {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -225,77 +280,122 @@ footer {
   margin: 2.2rem;
 }
 
+
+.hero-content {
+  flex: 1;
+}
+
+
 .hero-title {
   font-size: 60px;
+
   font-weight: 900;
 
   color: var(--color-heading);
 }
 
+
 .hero-text {
   max-width: 35rem;
 }
+
 
 .hero-img {
   width: clamp(140px, 25vw, 250px);
 
   flex-shrink: 0;
+  
 
   margin-left: auto;
 }
+
+
+/* Pom image button */
+
 .pom-btn {
-    background: none;
+  background: none;
+
   border: none;
+
   padding: 0;
+
   margin: 0;
+
   color: inherit;
+
   text-decoration: none;
+
   font: inherit;
+
   pointer-events: auto;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+
 .pom-btn:hover {
-  transform: translateX(3px);
-  transform: rotate(20deg);
+  transform:
+    translateX(3px)
+    rotate(10deg);
 
-  box-shadow:
-    5px 5px 0 var(--color-accent-shadow);
+ 
 }
 
 
+.pom-btn:active {
+  transform:
+    scale(0.95)
+    rotate(10deg);
+}
 
 
-/* Recipe rows */
+/* =========================================
+   RECIPE ROWS
+   ========================================= */
 
 .recipe-favorites,
 .recipe-must-haves,
 .recipe-easy-meal {
   display: flex;
+
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
+
   flex-direction: row;
+
+  /* Keeps cards in one horizontal row */
   flex-wrap: nowrap;
 
   gap: 1rem;
 
+  /* Creates the horizontal carousel */
   overflow-x: auto;
+  overflow-y: hidden;
 
   scroll-behavior: smooth;
+
+  scroll-snap-type: x proximity;
 
   padding: 1rem 0;
 
   margin: 1.2rem;
+
   margin-bottom: 4rem;
 }
 
 
-/* Individual recipe cards */
+/* =========================================
+   INDIVIDUAL RECIPE CARDS
+   ========================================= */
 
 .recipe-card {
   display: flex;
 
-  height: max-content;
-
   flex: 0 0 180px;
+
+  width: 180px;
 
   text-align: center;
 
@@ -306,7 +406,14 @@ footer {
   border: 2px solid var(--color-accent-pink);
 
   border-radius: var(--radius-medium);
+
+  scroll-snap-align: start;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
 
 .recipe-card:hover {
   transform: translateY(-4px);
@@ -316,12 +423,22 @@ footer {
 }
 
 
-/* Recipe images */
+.recipe-btn {
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+}
+
+
+/* =========================================
+   RECIPE IMAGES
+   ========================================= */
 
 .recipe-card img {
-  display: inline-flex;
+  width: 100%;
 
-  width: 200px;
   height: 140px;
 
   object-fit: cover;
@@ -330,16 +447,14 @@ footer {
 }
 
 
-/* Recipe card text */
-
-.recipe-card h1 {
-  color: var(--color-text);
-
-  font-size: 1.2rem;
-}
+/* =========================================
+   RECIPE CARD TEXT
+   ========================================= */
 
 .recipe-title {
   min-height: 3.2rem;
+
+  margin-top: 0.5rem;
 
   display: -webkit-box;
 
@@ -347,7 +462,20 @@ footer {
   -webkit-box-orient: vertical;
 
   overflow: hidden;
+
+  color: var(--color-text);
 }
+
+
+.recipe-hover-info {
+  margin-top: 0.5rem;
+
+  font-size: 0.8rem;
+
+  color: var(--color-text-muted);
+}
+
+
 /* =========================================
    CONTACT
    ========================================= */
@@ -411,7 +539,6 @@ footer {
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   padding-block: 2rem;
@@ -421,57 +548,14 @@ footer {
   font-size: 1.2rem;
 
   line-height: 1.2;
-}
 
-/* Tablet and smaller screens */
-
-@media (max-width: 800px) {
-  .hero-section {
-    margin: 1.5rem;
-    gap: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: 48px;
-  }
-
-  .hero-img {
-    width: clamp(120px, 25vw, 200px);
-  }
+  text-align: center;
 }
 
 
-/* Mobile screens */
-
-@media (max-width: 600px) {
-  .hero-section {
-    margin: 1rem;
-
-    gap: 1rem;
-  }
-
-  .hero-title {
-    font-size: 38px;
-  }
-
-  .hero-text {
-    font-size: 0.9rem;
-  }
-
-  .hero-img {
-    width: clamp(120px, 28vw, 200px);
-  }
-
-  h3 {
-    font-size: 24px;
-  }
-
-  .recipe-favorites,
-  .recipe-must-haves,
-  .recipe-easy-meal {
-    margin: 0.8rem 0;
-  }
-}
+/* =========================================
+   CONFETTI
+   ========================================= */
 
 .confetti {
   position: fixed;
@@ -479,18 +563,21 @@ footer {
   top: -20px;
 
   width: 10px;
+
   height: 15px;
 
   z-index: 99999;
 
   pointer-events: none;
 
-  animation: confetti-fall 3s linear forwards;
+  animation:
+    confetti-fall 3s
+    linear
+    forwards;
 }
 
 
 @keyframes confetti-fall {
-
   0% {
     transform:
       translateY(-10vh)
@@ -506,11 +593,225 @@ footer {
 
     opacity: 0;
   }
-
 }
 
 
-/* Dark mode colours */
+/* =========================================
+   POM CLICK WARNING
+   ========================================= */
+
+/*
+  This warning sits outside <main>,
+  so the main page can fade without
+  fading the warning itself.
+*/
+
+.warning {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10000;
+
+  padding: 1rem;
+
+  background-color: rgba(77, 54, 67, 0.35);
+}
+
+
+.warning-card {
+  max-width: 400px;
+
+  width: 100%;
+
+  padding: 2rem;
+
+  text-align: center;
+
+  color: var(--color-accent-light-pink);
+
+  background-color: var(--color-text);
+
+  border: 3px solid var(--color-secondary);
+
+  border-radius: var(--radius-large);
+
+  box-shadow:
+    8px 8px 0 var(--color-accent-orange);
+}
+
+
+.warning-card h1 {
+  margin-bottom: 0.5rem;
+}
+
+
+.warning-card p {
+  margin-bottom: 1rem;
+}
+
+
+.warning-card button {
+  padding: 0.6rem 1.2rem;
+
+  color: var(--color-text);
+
+  background-color: var(--color-secondary);
+
+  border-radius: var(--radius-medium);
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.warning-card button:hover {
+  background-color: var(--color-secondary-hover);
+
+  transform: translateY(-2px);
+}
+
+
+/* Completely hides an element */
+
+.hidden {
+  display: none;
+}
+
+
+/*
+  Used when the warning appears.
+  Also stops users clicking the faded page.
+*/
+
+.blurAll {
+  opacity: 0.3;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   TABLET AND SMALLER SCREENS
+   ========================================= */
+
+@media (max-width: 800px) {
+  .hero-section {
+    margin: 1.5rem;
+
+    gap: 1.5rem;
+  }
+
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+
+  .hero-img {
+    width: clamp(120px, 25vw, 200px);
+  }
+}
+
+
+/* =========================================
+   MOBILE SCREENS
+   ========================================= */
+
+@media (max-width: 600px) {
+  .primary-nav {
+    gap: 0.7rem;
+
+    padding: 0.5rem 1rem;
+  }
+
+
+  .primary-nav a {
+    font-size: 0.85rem;
+  }
+
+
+  .hero-section {
+    margin: 1rem;
+
+    gap: 1rem;
+  }
+
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+
+  .hero-text {
+    font-size: 0.9rem;
+  }
+
+
+  .hero-img {
+    width: clamp(120px, 28vw, 200px);
+  }
+
+
+  h3 {
+    font-size: 24px;
+  }
+
+
+  .recipe-favorites,
+  .recipe-must-haves,
+  .recipe-easy-meal {
+    margin: 0.8rem 0;
+
+    gap: 0.8rem;
+  }
+
+
+  .recipe-card {
+    flex-basis: 160px;
+
+    width: 160px;
+  }
+
+
+  .contact li a {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  main {
+    animation: none;
+  }
+
+
+  .recipe-card,
+  .pom-btn,
+  .primary-nav a {
+    transition: none;
+  }
+}
+
+
+/* =========================================
+   DARK MODE COLOURS
+   ========================================= */
 
 [data-theme="dark"] {
   /* Page backgrounds */

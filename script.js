@@ -1,15 +1,48 @@
-const recipeCard = document.getElementById("recipe-card");
-const recipeFavorites = document.getElementById("recipe-favorites");
-const recipeMusthaves = document.getElementById("recipe-must-haves");
-const recipeEasyMeal = document.getElementById("recipe-easy-meal");
+/* =========================================
+   DOM ELEMENTS
+   ========================================= */
 
-const pomBtn = document.getElementById("pom-btn");
-const pomAudio = document.getElementById("pom-audio");
+// Recipe row containers
 
-let isEasyMeal = false;
-let isMusthaves = false;
-let isFavorite = false;
+const recipeFavorites =
+  document.getElementById("recipe-favorites");
 
+const recipeMusthaves =
+  document.getElementById("recipe-must-haves");
+
+const recipeEasyMeal =
+  document.getElementById("recipe-easy-meal");
+
+
+// Pom Easter egg elements
+
+const pomBtn =
+  document.getElementById("pom-btn");
+
+const pomAudio =
+  document.getElementById("pom-audio");
+
+const warningEl =
+  document.getElementById("warning");
+
+const mainEl =
+  document.getElementById("main");
+
+const navEl =
+  document.querySelector(".site-header");
+
+const exitPom =
+  document.getElementById("exit-pom");
+
+
+// Keeps track of how many times Pom has been clicked
+
+let pomCount = 0;
+
+
+/* =========================================
+   RECIPE DATA
+   ========================================= */
 
 const recipes = [
   {
@@ -22,6 +55,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "one-pan-chicken-and-rice",
     name: "One Pan Chicken and Rice",
@@ -32,6 +66,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "beef-tacos",
     name: "Beef Tacos",
@@ -42,6 +77,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "mac-and-cheese",
     name: "Mac and Cheese",
@@ -52,6 +88,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "chicken-garlic-baguette",
     name: "Chicken Garlic Baguette",
@@ -62,6 +99,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "chicken-cajun-pasta",
     name: "Chicken Cajun Pasta",
@@ -72,6 +110,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "taco-loaded-potatoes",
     name: "Taco Loaded Potatoes",
@@ -82,6 +121,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "roast-potatoes",
     name: "Roast Potatoes",
@@ -92,6 +132,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "seasoned-drumsticks",
     name: "Seasoned Drumsticks",
@@ -102,6 +143,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "chicken-and-shrimp-cajun-pasta",
     name: "Chicken and Shrimp Cajun Pasta",
@@ -112,6 +154,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "chicken-and-broccoli-pasta-bake",
     name: "Chicken and Broccoli Pasta Bake",
@@ -122,6 +165,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "red-thai-chicken-curry",
     name: "Red Thai Chicken Curry",
@@ -132,6 +176,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: false
   },
+
   {
     id: "cajun-chicken-rigatoni",
     name: "Cajun Chicken Rigatoni",
@@ -142,6 +187,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "chicken-skewers-with-baby-potatoes-and-avocado",
     name: "Chicken Skewers with Baby Potatoes and Avocado",
@@ -152,6 +198,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "chicken-sausage-pasta",
     name: "Chicken Sausage Pasta",
@@ -162,6 +209,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "creamy-garlic-mozzarella-chicken-pasta",
     name: "Creamy Garlic Mozzarella Chicken Pasta",
@@ -172,6 +220,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "bbq-sweet-chilli-sausage-pasta",
     name: "BBQ Sweet Chilli Sausage Pasta",
@@ -182,6 +231,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "honey-glazed-lamb-chops",
     name: "Honey Glazed Lamb Chops",
@@ -192,6 +242,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "southern-fried-cabbage",
     name: "Southern Fried Cabbage",
@@ -202,6 +253,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "steamed-vegetables",
     name: "Steamed Vegetables",
@@ -212,6 +264,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "chicken-taco",
     name: "Chicken Taco",
@@ -222,6 +275,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "chicken-milanese",
     name: "Chicken Milanese",
@@ -232,6 +286,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: false
   },
+
   {
     id: "chicken-fried-rice",
     name: "Chicken Fried Rice",
@@ -242,6 +297,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "chilli-con-carne",
     name: "Chilli Con Carne",
@@ -252,6 +308,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "one-pan-chicken-fajita-enchiladas",
     name: "One Pan Chicken Fajita Enchiladas",
@@ -262,6 +319,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "yellow-rice",
     name: "Yellow Rice",
@@ -272,6 +330,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "air-fryer-honey-glazed-carrots",
     name: "Air Fryer Honey Glazed Carrots",
@@ -282,6 +341,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "cauliflower-and-broccoli-cheese",
     name: "Cauliflower and Broccoli Cheese",
@@ -292,6 +352,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "garlic-parmesan-chicken-skewers",
     name: "Garlic Parmesan Chicken Skewers",
@@ -302,6 +363,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "hot-honey-bbq-chicken",
     name: "Hot Honey BBQ Chicken",
@@ -312,6 +374,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "spiced-chicken-and-rice",
     name: "Spiced Chicken and Rice",
@@ -322,6 +385,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: true
   },
+
   {
     id: "honey-garlic-beef-pasta",
     name: "Honey Garlic Beef Pasta",
@@ -332,6 +396,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "korean-fried-chicken",
     name: "Korean Fried Chicken",
@@ -342,6 +407,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "street-corn-chicken-and-rice-bowl",
     name: "Street Corn Chicken and Rice Bowl",
@@ -352,6 +418,7 @@ const recipes = [
     isMusthaves: false,
     isEasyMeal: true
   },
+
   {
     id: "honey-chilli-beef-pasta",
     name: "Honey Chilli Beef Pasta",
@@ -362,6 +429,7 @@ const recipes = [
     isMusthaves: true,
     isEasyMeal: false
   },
+
   {
     id: "meat-feast-pasta",
     name: "Meat Feast Pasta",
@@ -375,104 +443,248 @@ const recipes = [
 ];
 
 
-
+/* =========================================
+   RENDER FAVORITE RECIPES
+   ========================================= */
 
 function renderFavCards() {
+
+  // Clears the container before rendering
+
   recipeFavorites.innerHTML = "";
 
+
+  // Loops through every recipe
+
   recipes.forEach(function(recipe) {
+
+
+    // Only renders recipes marked as favorite
 
     if (recipe.isFavorite === true) {
 
       recipeFavorites.innerHTML += `
         <article class="recipe-card">
-          <a href="recipe.html?id=${recipe.id}" class="recipe-btn">
 
-            <img src="${recipe.image}" alt="Photo of ${recipe.name}">
+          <a
+            href="recipe.html?id=${recipe.id}"
+            class="recipe-btn"
+          >
 
-            <p class="recipe-title">${recipe.name}</p>
+            <img
+              src="${recipe.image}"
+              alt="Photo of ${recipe.name}"
+            >
+
+            <p class="recipe-title">
+              ${recipe.name}
+            </p>
 
             <div class="recipe-hover-info">
-              <p>${recipe.rating}</p>
-              <p>Difficulty: ${recipe.difficulty}</p>
+
+              <p>
+                ${recipe.rating}
+              </p>
+
+              <p>
+                Difficulty: ${recipe.difficulty}
+              </p>
+
             </div>
 
           </a>
+
         </article>
       `;
     }
 
   });
+
 }
+
+
+/* =========================================
+   RENDER MUST-HAVE RECIPES
+   ========================================= */
+
+function renderMustCards() {
+
+  // Clears the container before rendering
+
+  recipeMusthaves.innerHTML = "";
+
+
+  // Loops through every recipe
+
+  recipes.forEach(function(recipe) {
+
+
+    // Only renders recipes marked as must-have
+
+    if (recipe.isMusthaves === true) {
+
+      recipeMusthaves.innerHTML += `
+        <article class="recipe-card">
+
+          <a
+            href="recipe.html?id=${recipe.id}"
+            class="recipe-btn"
+          >
+
+            <img
+              src="${recipe.image}"
+              alt="Photo of ${recipe.name}"
+            >
+
+            <p class="recipe-title">
+              ${recipe.name}
+            </p>
+
+            <div class="recipe-hover-info">
+
+              <p>
+                ${recipe.rating}
+              </p>
+
+              <p>
+                Difficulty: ${recipe.difficulty}
+              </p>
+
+            </div>
+
+          </a>
+
+        </article>
+      `;
+    }
+
+  });
+
+}
+
+
+/* =========================================
+   RENDER EASY MEALS
+   ========================================= */
+
+function renderEasyCards() {
+
+  // Clears the container before rendering
+
+  recipeEasyMeal.innerHTML = "";
+
+
+  // Loops through every recipe
+
+  recipes.forEach(function(recipe) {
+
+
+    // Only renders recipes marked as easy meals
+
+    if (recipe.isEasyMeal === true) {
+
+      recipeEasyMeal.innerHTML += `
+        <article class="recipe-card">
+
+          <a
+            href="recipe.html?id=${recipe.id}"
+            class="recipe-btn"
+          >
+
+            <img
+              src="${recipe.image}"
+              alt="Photo of ${recipe.name}"
+            >
+
+            <p class="recipe-title">
+              ${recipe.name}
+            </p>
+
+            <div class="recipe-hover-info">
+
+              <p>
+                ${recipe.rating}
+              </p>
+
+              <p>
+                Difficulty: ${recipe.difficulty}
+              </p>
+
+            </div>
+
+          </a>
+
+        </article>
+      `;
+    }
+
+  });
+
+}
+
+
+/* =========================================
+   INITIAL PAGE RENDER
+   ========================================= */
+
+/*
+  These run once when script.js loads
+  and create all three recipe rows.
+*/
 
 renderFavCards();
 
-function renderMustCards() {
-    recipeMusthaves.innerhtml = "";
-
-    recipes.forEach(function(recipe) {
-      if (recipe.isMusthaves === true) {
-
-        recipeMusthaves.innerHTML += `
-            <article class="recipe-card">
-          <a href="recipe.html?id=${recipe.id}" class="recipe-btn">
-
-            <img src="${recipe.image}" alt="Photo of ${recipe.name}">
-
-            <p class="recipe-title">${recipe.name}</p>
-
-            <div class="recipe-hover-info">
-              <p>${recipe.rating}</p>
-              <p>Difficulty: ${recipe.difficulty}</p>
-            </div>
-
-          </a>
-        </article>
-      `;
-      }
-    }) 
-}
-
 renderMustCards();
-
-function renderEasyCards() {
-    recipeEasyMeal.innerhtml = "";
-
-    recipes.forEach(function(recipe) {
-      if (recipe.isEasyMeal === true) {
-
-        recipeEasyMeal.innerHTML += `
-            <article class="recipe-card">
-          <a href="recipe.html?id=${recipe.id}" class="recipe-btn">
-
-            <img src="${recipe.image}" alt="Photo of ${recipe.name}">
-
-            <p class="recipe-title">${recipe.name}</p>
-
-            <div class="recipe-hover-info">
-              <p>${recipe.rating}</p>
-              <p>Difficulty: ${recipe.difficulty}</p>
-            </div>
-
-          </a>
-        </article>
-      `;
-      }
-    }) 
-}
 
 renderEasyCards();
 
-// Pom Button
+
+/* =========================================
+   POM BUTTON EASTER EGG
+   ========================================= */
 
 function pomChaos() {
-  pomAudio.play()
+
+  // Adds one to the Pom click counter
+
+  pomCount++;
+
+
+  // Restarts the sound so fast clicks still play it
+
+  pomAudio.currentTime = 0;
+
+  pomAudio.play();
+
+
+  // Creates the confetti
+
   createConfetti();
+
+
+  // Shows warning after 15 clicks
+
+  if (pomCount >= 15) {
+    clickStopper();
+  }
+
 }
 
-pomBtn.addEventListener("click", pomChaos)
+
+/* Pom button click listener */
+
+pomBtn.addEventListener(
+  "click",
+  pomChaos
+);
+
+
+/* =========================================
+   CONFETTI
+   ========================================= */
 
 function createConfetti() {
+
   const colors = [
     "#ff69b4",
     "#ffd65c",
@@ -482,31 +694,118 @@ function createConfetti() {
     "#aaebcd"
   ];
 
+
+  // Creates 100 individual pieces of confetti
+
   for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement("div");
+
+    const confetti =
+      document.createElement("div");
+
+
+    // Gives the new element its CSS class
 
     confetti.classList.add("confetti");
 
-    // Random colour
+
+    // Picks a random colour
+
     confetti.style.backgroundColor =
-      colors[Math.floor(Math.random() * colors.length)];
+      colors[
+        Math.floor(
+          Math.random() * colors.length
+        )
+      ];
 
-    // Random horizontal starting position
-    confetti.style.left = Math.random() * 100 + "vw";
 
-    // Random animation delay
+    // Gives each piece a random horizontal position
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
+
+    // Gives each piece a slightly different delay
+
     confetti.style.animationDelay =
       Math.random() * 0.5 + "s";
 
-    // Random falling speed
+
+    // Gives each piece a random falling speed
+
     confetti.style.animationDuration =
       Math.random() * 2 + 2 + "s";
 
+
+    // Adds confetti to the page
+
     document.body.appendChild(confetti);
 
-    // Remove confetti after animation
-    setTimeout(() => {
+
+    // Removes it after the animation finishes
+
+    setTimeout(function() {
+
       confetti.remove();
+
     }, 5000);
+
   }
+
 }
+
+
+/* =========================================
+   POM CLICK WARNING
+   ========================================= */
+
+function clickStopper() {
+
+  // Shows the warning
+
+  warningEl.classList.remove("hidden");
+
+
+  // Fades and disables the main website
+
+  mainEl.classList.add("blurAll");
+
+  navEl.classList.add("blurAll");
+
+}
+
+
+/* =========================================
+   CLOSE POM WARNING
+   ========================================= */
+
+function closePom() {
+
+  // Hides the warning
+
+  warningEl.classList.add("hidden");
+
+
+  // Restores the website
+
+  mainEl.classList.remove("blurAll");
+
+  navEl.classList.remove("blurAll");
+
+
+  /*
+    Resets the counter so the user has to
+    click Pom another 15 times for the
+    warning to appear again.
+  */
+
+  pomCount = 0;
+
+}
+
+
+/* Exit warning button */
+
+exitPom.addEventListener(
+  "click",
+  closePom
+);
