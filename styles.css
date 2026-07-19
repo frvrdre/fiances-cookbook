@@ -55,7 +55,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+<<<<<<< HEAD
   scroll-behaviour: smooth;
+=======
+  scroll-behavior: smooth;
+>>>>>>> 2588f79 (added smoother navigation through site)
 }
 
 
@@ -63,6 +67,20 @@
 
 html {
   scroll-behavior: smooth;
+  animation: page-load 0.8s ease-out;
+  scroll-padding-top: 80px;
+}
+
+@keyframes page-load {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body {
