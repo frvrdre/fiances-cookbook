@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
 
 
-/* =========================================
-   MAIN COLOURS AND REUSABLE VALUES
-   ========================================= */
+/* Main colours and reusable values */
 
 :root {
   /* Page backgrounds */
@@ -51,9 +49,7 @@
 }
 
 
-/* =========================================
-   BASIC RESET
-   ========================================= */
+/* Basic reset */
 
 * {
   margin: 0;
@@ -62,9 +58,7 @@
 }
 
 
-/* =========================================
-   MAIN PAGE STYLES
-   ========================================= */
+/* Main page styles */
 
 html {
   scroll-behavior: smooth;
@@ -129,9 +123,7 @@ main {
 }
 
 
-/* =========================================
-   DEFAULT ELEMENT STYLES
-   ========================================= */
+/* Default element styles */
 
 a {
   color: inherit;
@@ -193,11 +185,7 @@ h3 {
 }
 
 
-/* =========================================
-   MAIN CONTENT LAYOUT
-   ========================================= */
-
-/* Keeps the main content centred */
+/* Main content layout */
 
 main,
 footer {
@@ -210,9 +198,7 @@ footer {
 }
 
 
-/* =========================================
-   STICKY NAVIGATION
-   ========================================= */
+/* Sticky navigation */
 
 .site-header {
   position: sticky;
@@ -265,9 +251,7 @@ footer {
 }
 
 
-/* =========================================
-   HERO SECTION
-   ========================================= */
+/* Hero section */
 
 .hero-section {
   display: flex;
@@ -304,7 +288,6 @@ footer {
   width: clamp(140px, 25vw, 250px);
 
   flex-shrink: 0;
-  
 
   margin-left: auto;
 }
@@ -339,8 +322,6 @@ footer {
   transform:
     translateX(3px)
     rotate(10deg);
-
- 
 }
 
 
@@ -351,9 +332,7 @@ footer {
 }
 
 
-/* =========================================
-   RECIPE ROWS
-   ========================================= */
+/* Recipe rows */
 
 .recipe-favorites,
 .recipe-must-haves,
@@ -386,9 +365,7 @@ footer {
 }
 
 
-/* =========================================
-   INDIVIDUAL RECIPE CARDS
-   ========================================= */
+/* Individual recipe cards */
 
 .recipe-card {
   display: flex;
@@ -432,9 +409,7 @@ footer {
 }
 
 
-/* =========================================
-   RECIPE IMAGES
-   ========================================= */
+/* Recipe images */
 
 .recipe-card img {
   width: 100%;
@@ -447,9 +422,7 @@ footer {
 }
 
 
-/* =========================================
-   RECIPE CARD TEXT
-   ========================================= */
+/* Recipe card text */
 
 .recipe-title {
   min-height: 3.2rem;
@@ -459,6 +432,7 @@ footer {
   display: -webkit-box;
 
   -webkit-line-clamp: 2;
+
   -webkit-box-orient: vertical;
 
   overflow: hidden;
@@ -476,9 +450,7 @@ footer {
 }
 
 
-/* =========================================
-   CONTACT
-   ========================================= */
+/* Contact */
 
 .contact p {
   margin-bottom: 1rem;
@@ -531,9 +503,7 @@ footer {
 }
 
 
-/* =========================================
-   FOOTER
-   ========================================= */
+/* Footer */
 
 footer {
   display: flex;
@@ -553,9 +523,7 @@ footer {
 }
 
 
-/* =========================================
-   CONFETTI
-   ========================================= */
+/* Confetti */
 
 .confetti {
   position: fixed;
@@ -596,15 +564,7 @@ footer {
 }
 
 
-/* =========================================
-   POM CLICK WARNING
-   ========================================= */
-
-/*
-  This warning sits outside <main>,
-  so the main page can fade without
-  fading the warning itself.
-*/
+/* Pom click warning */
 
 .warning {
   position: fixed;
@@ -678,17 +638,14 @@ footer {
 }
 
 
-/* Completely hides an element */
+/* Hidden elements */
 
 .hidden {
   display: none;
 }
 
 
-/*
-  Used when the warning appears.
-  Also stops users clicking the faded page.
-*/
+/* Fades and disables the page while the warning is open */
 
 .blurAll {
   opacity: 0.3;
@@ -697,9 +654,7 @@ footer {
 }
 
 
-/* =========================================
-   TABLET AND SMALLER SCREENS
-   ========================================= */
+/* Tablet screens */
 
 @media (max-width: 800px) {
   .hero-section {
@@ -720,9 +675,7 @@ footer {
 }
 
 
-/* =========================================
-   MOBILE SCREENS
-   ========================================= */
+/* Mobile screens */
 
 @media (max-width: 600px) {
   .primary-nav {
@@ -786,9 +739,7 @@ footer {
 }
 
 
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-   ========================================= */
+/* Reduced motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -809,9 +760,7 @@ footer {
 }
 
 
-/* =========================================
-   DARK MODE COLOURS
-   ========================================= */
+/* Dark mode colours */
 
 [data-theme="dark"] {
   /* Page backgrounds */
