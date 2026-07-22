@@ -1,8 +1,4 @@
-/* =========================================
-   DOM ELEMENTS
-   ========================================= */
-
-// Recipe row containers
+// DOM elements
 
 const recipeFavorites =
   document.getElementById("recipe-favorites");
@@ -12,9 +8,6 @@ const recipeMusthaves =
 
 const recipeEasyMeal =
   document.getElementById("recipe-easy-meal");
-
-
-// Pom Easter egg elements
 
 const pomBtn =
   document.getElementById("pom-btn");
@@ -35,14 +28,12 @@ const exitPom =
   document.getElementById("exit-pom");
 
 
-// Keeps track of how many times Pom has been clicked
+// Pom click count
 
 let pomCount = 0;
 
 
-/* =========================================
-   RECIPE DATA
-   ========================================= */
+// Recipe data
 
 const recipes = [
   {
@@ -443,9 +434,7 @@ const recipes = [
 ];
 
 
-/* =========================================
-   RENDER FAVORITE RECIPES
-   ========================================= */
+// Render favorite recipes
 
 function renderFavCards() {
 
@@ -457,7 +446,6 @@ function renderFavCards() {
   // Loops through every recipe
 
   recipes.forEach(function(recipe) {
-
 
     // Only renders recipes marked as favorite
 
@@ -499,13 +487,10 @@ function renderFavCards() {
     }
 
   });
-
 }
 
 
-/* =========================================
-   RENDER MUST-HAVE RECIPES
-   ========================================= */
+// Render must-have recipes
 
 function renderMustCards() {
 
@@ -517,7 +502,6 @@ function renderMustCards() {
   // Loops through every recipe
 
   recipes.forEach(function(recipe) {
-
 
     // Only renders recipes marked as must-have
 
@@ -559,13 +543,10 @@ function renderMustCards() {
     }
 
   });
-
 }
 
 
-/* =========================================
-   RENDER EASY MEALS
-   ========================================= */
+// Render easy meals
 
 function renderEasyCards() {
 
@@ -577,7 +558,6 @@ function renderEasyCards() {
   // Loops through every recipe
 
   recipes.forEach(function(recipe) {
-
 
     // Only renders recipes marked as easy meals
 
@@ -619,18 +599,10 @@ function renderEasyCards() {
     }
 
   });
-
 }
 
 
-/* =========================================
-   INITIAL PAGE RENDER
-   ========================================= */
-
-/*
-  These run once when script.js loads
-  and create all three recipe rows.
-*/
+// Initial page render
 
 renderFavCards();
 
@@ -639,9 +611,7 @@ renderMustCards();
 renderEasyCards();
 
 
-/* =========================================
-   POM BUTTON EASTER EGG
-   ========================================= */
+// Pom button Easter egg
 
 function pomChaos() {
 
@@ -671,7 +641,7 @@ function pomChaos() {
 }
 
 
-/* Pom button click listener */
+// Pom button click listener
 
 pomBtn.addEventListener(
   "click",
@@ -679,9 +649,7 @@ pomBtn.addEventListener(
 );
 
 
-/* =========================================
-   CONFETTI
-   ========================================= */
+// Confetti
 
 function createConfetti() {
 
@@ -744,9 +712,7 @@ function createConfetti() {
     // Removes it after the animation finishes
 
     setTimeout(function() {
-
       confetti.remove();
-
     }, 5000);
 
   }
@@ -754,9 +720,7 @@ function createConfetti() {
 }
 
 
-/* =========================================
-   POM CLICK WARNING
-   ========================================= */
+// Pom click warning
 
 function clickStopper() {
 
@@ -774,9 +738,7 @@ function clickStopper() {
 }
 
 
-/* =========================================
-   CLOSE POM WARNING
-   ========================================= */
+// Close Pom warning
 
 function closePom() {
 
@@ -792,18 +754,14 @@ function closePom() {
   navEl.classList.remove("blurAll");
 
 
-  /*
-    Resets the counter so the user has to
-    click Pom another 15 times for the
-    warning to appear again.
-  */
+  // Resets the click counter
 
   pomCount = 0;
 
 }
 
 
-/* Exit warning button */
+// Exit warning button
 
 exitPom.addEventListener(
   "click",
