@@ -15,16 +15,11 @@
   <script src="script.js" defer></script>
 </head>
 
-
 <body>
 
-
-  <!-- =========================================
-       STICKY NAVIGATION
-       ========================================= -->
+  <!-- Sticky navigation -->
 
   <header class="site-header">
-
     <nav class="primary-nav">
 
       <a href="#hero">
@@ -40,18 +35,10 @@
       </a>
 
     </nav>
-
   </header>
 
 
-  <!-- =========================================
-       POM CLICK WARNING
-       ========================================= -->
-
-  <!--
-    This is outside <main> so that when main
-    becomes faded, the warning stays fully visible.
-  -->
+  <!-- Pom click warning -->
 
   <section id="warning" class="warning hidden">
 
@@ -74,16 +61,12 @@
   </section>
 
 
-  <!-- =========================================
-       MAIN CONTENT
-       ========================================= -->
+  <!-- Main content -->
 
   <main id="main">
 
 
-    <!-- =========================================
-         HERO
-         ========================================= -->
+    <!-- Hero -->
 
     <section id="hero" class="hero-section">
 
@@ -104,108 +87,126 @@
 
       <div class="hero-img">
 
-        <button id="pom-btn" class="pom-btn" type="button" aria-label="Click Pom">
-
-          <img src="/assets/images/pom.png" alt="Shan's Recipe Book">
-
+        <button
+          id="pom-btn"
+          class="pom-btn"
+          type="button"
+          aria-label="Click Pom"
+        >
+          <img
+            src="/assets/images/pom.png"
+            alt="Shan's Recipe Book"
+          >
         </button>
-
 
         <!-- Pom button sound -->
 
-        <audio id="pom-audio" src="/assets/images/yippee.mp3" preload="auto"></audio>
+        <audio
+          id="pom-audio"
+          src="/assets/images/yippee.mp3"
+          preload="auto"
+        ></audio>
 
       </div>
 
     </section>
 
 
-    <!-- =========================================
-         FAVORITE RECIPES
-         ========================================= -->
+    <!-- Favorite recipes -->
 
-    <h3 id="favorite-recipes" class="favorite-recipes">
+    <h3
+      id="favorite-recipes"
+      class="favorite-recipes"
+    >
       FAVORITE RECIPES
     </h3>
 
+    <!-- JavaScript renders favorite recipes here -->
 
-    <!--
-      JavaScript renders recipes where:
-      isFavorite === true
-    -->
-
-    <section id="recipe-favorites" class="recipe-favorites">
+    <section
+      id="recipe-favorites"
+      class="recipe-favorites"
+    >
     </section>
 
 
-    <!-- =========================================
-         MUST MAKE RECIPES
-         ========================================= -->
+    <!-- Must make recipes -->
 
-    <h3 id="must-haves" class="must-haves">
+    <h3
+      id="must-haves"
+      class="must-haves"
+    >
       MUST MAKE RECIPES
     </h3>
 
+    <!-- JavaScript renders must-have recipes here -->
 
-    <!--
-      JavaScript renders recipes where:
-      isMusthaves === true
-    -->
-
-    <section id="recipe-must-haves" class="recipe-must-haves">
+    <section
+      id="recipe-must-haves"
+      class="recipe-must-haves"
+    >
     </section>
 
 
-    <!-- =========================================
-         EASY TO MAKE MEALS
-         ========================================= -->
+    <!-- Easy meals -->
 
-    <h3 id="easy-meal" class="easy-meal">
+    <h3
+      id="easy-meal"
+      class="easy-meal"
+    >
       EASY TO MAKE MEALS
     </h3>
 
+    <!-- JavaScript renders easy meals here -->
 
-    <!--
-      JavaScript renders recipes where:
-      isEasyMeal === true
-    -->
-
-    <section id="recipe-easy-meal" class="recipe-easy-meal">
+    <section
+      id="recipe-easy-meal"
+      class="recipe-easy-meal"
+    >
     </section>
 
 
-    <!-- =========================================
-         CONTACT
-         ========================================= -->
+    <!-- Contact -->
 
-    <section id="contact" class="contact">
+    <section
+      id="contact"
+      class="contact"
+    >
 
       <h2>
         Contact Me
       </h2>
 
-
       <ul>
 
-
-        <!-- LINKEDIN -->
+        <!-- LinkedIn -->
 
         <li>
 
-          <img src="assets/images/linkedin.svg" alt="LinkedIn profile">
+          <img
+            src="assets/images/linkedin.svg"
+            alt="LinkedIn profile"
+          >
 
-          <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andres-young-065b58265/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/andres-young-065b58265/"
+          >
             LinkedIn/@Andres Young
           </a>
 
         </li>
 
 
-        <!-- DISCORD -->
+        <!-- Discord -->
 
         <li>
 
-          <img src="assets/images/discord.svg" alt="Discord username">
+          <img
+            src="assets/images/discord.svg"
+            alt="Discord username"
+          >
 
           <a href="#">
             Discord/@frvrrdre
@@ -214,13 +215,20 @@
         </li>
 
 
-        <!-- GITHUB -->
+        <!-- GitHub -->
 
         <li>
 
-          <img src="assets/images/github.svg" alt="GitHub page">
+          <img
+            src="assets/images/github.svg"
+            alt="GitHub page"
+          >
 
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/frvrdre">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/frvrdre"
+          >
             GitHub/@frvrdre
           </a>
 
@@ -240,14 +248,11 @@
   </main>
 
 
-  <!-- =========================================
-       FOOTER
-       ========================================= -->
+  <!-- Footer -->
 
   <footer>
     Copyright © Andres Young 2026
   </footer>
-
 
 </body>
 
